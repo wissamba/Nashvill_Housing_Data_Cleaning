@@ -3,9 +3,7 @@
 -----------------------------------------------------------------------------------------------
 --SKILLS USED: Joins, CTE, CAST, Converting Data Types, Aggregate Functions, POSITION, SUBSTRING, SPLIT_PART, LEFT, RIGHT, CASE, ROW NUMBER, ALTER, DROP, DELETE, ADD, REMOVE.
 
-
 DATA CLEANING PROJECT:
-
 
 --Standardizing data format
 --Standardize the Date format
@@ -31,12 +29,11 @@ UPDATE "NashvilleHousing"
 SET SaleDateConverted = CAST ("SaleDate" AS DATE) ;
 
 ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- --Populate Property Address data
+--Populate Property Address data
 
 SELECT *
 FROM "NashvilleHousing" nh
 ORDER BY "ParcelID";
-
 
 SELECT a."ParcelID",
        b."ParcelID",
@@ -72,9 +69,9 @@ AND a."UniqueID " <> b."UniqueID "
 WHERE a."PropertyAddress" IS NULL ;
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- --Breaking out Address into Individuals Columns( Address, City, State)
- --Instead of using CHARINDEX (it did not work), I used POSITION
- --That was the query of ALEX THE ANALYST
+--Breaking out Address into Individuals Columns( Address, City, State)
+--Instead of using CHARINDEX (it did not work), I used POSITION
+--That was the query of ALEX THE ANALYST
 --SELECT
 --SUBSTRING("PropertyAddress", 1, CHARINDEX(',',  "PropertyAddress")-1) as Address
 --from "NashvilleHousing" nh ;
@@ -107,7 +104,7 @@ FROM "NashvilleHousing" nh
 
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- --SPLIT THE OwnerAddress in 3 different columns (Address, City, State)
+--SPLIT THE OwnerAddress in 3 different columns (Address, City, State)
 -- I could not use PARSENAME on Postgre SQL
 
 SELECT "OwnerAddress"
@@ -146,7 +143,7 @@ SELECT *
 FROM "NashvilleHousing" 
 
 --------------------------------------------------------------------------------------------------------------------------
- -- Change Y and N to Yes and No in "SoldasVacant" field
+-- Change Y and N to Yes and No in "SoldasVacant" field
 
 SELECT Distinct("SoldAsVacant"),
        Count("SoldAsVacant")
@@ -168,7 +165,7 @@ SET "SoldAsVacant" = CASE
                      END 
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- -- Remove Duplicates
+-- Remove Duplicates
 
 SELECT ("UniqueID "), COUNT (*)
 FROM "NashvilleHousing"
@@ -190,23 +187,22 @@ WHERE "row_num" > 1
 
 --------------------------------------------------------------------------------------------------------------------
 
-  SELECT *
-  FROM "NashvilleHousing" -- Delete Unused Columns
+SELECT *
+FROM "NashvilleHousing" -- Delete Unused Columns
 
-  SELECT *
-  FROM "NashvilleHousing"
+SELECT *
+FROM "NashvilleHousing"
 
-  ALTER TABLE "NashvilleHousing"
-  DROP COLUMN "PropertyAddress"
+ALTER TABLE "NashvilleHousing"
+DROP COLUMN "PropertyAddress"
 
-  ALTER TABLE "NashvilleHousing"
-  DROP COLUMN "OwnerAddress"
+ALTER TABLE "NashvilleHousing"
+DROP COLUMN "OwnerAddress"
+ALTER TABLE "NashvilleHousing"
+DROP COLUMN "SaleDate"
 
-  ALTER TABLE "NashvilleHousing"
-  DROP COLUMN "SaleDate"
-
-  ALTER TABLE "NashvilleHousing"
-  DROP COLUMN "TaxDistrict"
+ALTER TABLE "NashvilleHousing"
+DROP COLUMN "TaxDistrict"
 
 -----------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------
