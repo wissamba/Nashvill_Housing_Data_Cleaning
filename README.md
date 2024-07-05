@@ -2,7 +2,7 @@ In this project, I focused on cleaning and preprocessing the Nashville housing d
 
 Skills and Techniques Used:
 
-Joins: Integrated multiple tables to consolidate relevant information.
+JOINS: Integrated multiple tables to consolidate relevant information.
 
 Common Table Expressions (CTE): Simplified complex queries by breaking them into manageable parts.
 
